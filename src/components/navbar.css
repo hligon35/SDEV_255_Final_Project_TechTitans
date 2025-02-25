@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #8a2d2d;
+    padding: 14px 0;
+    z-index: 1000;
+
+ 
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 14px 20px;
+    text-align: center;
+}
+.navbar a:hover {
+    background-color: #a18484;
+    color: black;
+    font-weight: bold;
+}
