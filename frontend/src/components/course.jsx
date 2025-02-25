@@ -4,7 +4,7 @@ const Courses = () => {
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
-    fetch("https://sdev255fpbackend.glitch.me/api/courses")
+    fetch("https://sdev255fpbackendhl.glitch.me/api/courses")
     .then((response) => {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
