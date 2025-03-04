@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course</title>
+    <link rel="stylesheet" href="delete.css">
+<body>
+    <header>
+        <h1 style="text-align: center;">Delete a Course</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="addcourse.html">Add Course</a></li>
+                <li><a href="editcourse.html">Edit Course</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="delete-course-form" action="submit_delete_course" method="POST">
+            <div>
+                <label for="course-id">Course ID:</label>
+                <input type="text" id="course-id" name="course_id">
+            </div>
+            <div>
+                <label for="course-name">Course Name:</label>
+                <input type="text" id="course-name" name="course_name">
+            </div>
+            <div>
+                <button type="submit">Delete Course</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Tech Titans</p>
+    </footer>
+    <script src="delete.jsx"></script>
+</body>
+</html>
