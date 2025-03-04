@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Course</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Course</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="addcourse.html">Add Course</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="edit-course-form" action="submit_edit_course" method="POST">
+            <div>
+                <label for="course-id">Course ID:</label>
+                <input type="text" id="course-id" name="course_id" required>
+            </div>
+            <div>
+                <label for="course-name">Course Name:</label>
+                <input type="text" id="course-name" name="course_name" required>
+            </div>
+            <div>
+                <label for="course-description">Course Description:</label>
+                <textarea id="course-description" name="course_description" required></textarea>
+            </div>
+            <div>
+                <label for="course-duration">Course Duration:</label>
+                <input type="text" id="course-duration" name="course_duration" required>
+            </div>
+            <div>
+                <label for="course-instructor">Course Instructor:</label>
+                <input type="text" id="course-instructor" name="course_instructor" required>
+            </div>
+            <div>
+                <button type="submit">Save Changes</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2025 Tech Titans</p>
+    </footer>
+    <script src="scripts.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
