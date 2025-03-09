@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Student Schedule</h1>
+    </header>
+    <main>
+        <section id="view-schedule">
+            <h2>Your Schedule</h2>
+            <ul id="course-list">
+                <!-- Courses added here -->
+            </ul>
+        </section>
+        <section id="course-details">
+            <h2>Course Details</h2>
+            <div id="course-description">
+                <!-- Course description displayed here -->
+            </div>
+            <button id="add-course-button">Add Course</button>
+            <button id="remove-course-button">Remove Course</button>
+        </section>
+        <section id="manage-schedule">
+            <h2>Manage Your Schedule</h2>
+            <form id="add-course-form">
+                <label for="course-name">Course Name:</label>
+                <input type="text" id="course-name" name="course-name" required>
+                <button type="submit">Add Course</button>
+            </form>
+        </section>
+        <section id="current-schedule">
+            <h2>Current Schedule</h2>
+            <textarea id="schedule-textarea" readonly></textarea>
+        </section>
+        <div id="validation-message"></div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const courseList = document.getElementById('course-list');
+            const addCourseForm = document.getElementById('add-course-form');
+            const courseNameInput = document.getElementById('course-name');
+            const courseDescriptionDiv = document.getElementById('course-description');
+            const addCourseButton = document.getElementById('add-course-button');
+            const removeCourseButton = document.getElementById('remove-course-button');
+            const scheduleTextarea = document.getElementById('schedule-textarea');
+            const validationMessageDiv = document.getElementById('validation-message');
+
+            let selectedCourse = null;
+
+            // Function to add a course to the schedule
+            function addCourse(courseName) {
+                const li = document.createElement('li');
+                li.textContent = courseName;
+                li.addEventListener('click', () => {
+                    selectedCourse = courseName;
+                    courseDescriptionDiv.textContent = `Description for ${courseName}`;
+                });
+                courseList.appendChild(li);
+                updateScheduleTextarea();
+            }
+
+            // Function to remove a course from the schedule
+            function removeCourse(courseName) {
+                const items = courseList.getElementsByTagName('li');
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i].textContent === courseName) {
+                        courseList.removeChild(items[i]);
+                        break;
+                    }
+                }
+                updateScheduleTextarea();
+            }
+
+            // Function to update the schedule textarea
+            function updateScheduleTextarea() {
+                const items = courseList.getElementsByTagName('li');
+                let schedule = '';
+                for (let i = 0; i < items.length; i++) {
+                    schedule += items[i].textContent + '\n';
+                }
+                scheduleTextarea.value = schedule;
+            }
+
+            // Handle form submission to add a new course
+            addCourseForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const courseName = courseNameInput.value.trim();
+                if (courseName) {
+                    addCourse(courseName);
+                    courseNameInput.value = '';
+                    validationMessageDiv.textContent = 'Course added successfully!';
+                } else {
+                    validationMessageDiv.textContent = 'Please enter a course name.';
+                }
+            });
+
+            // Handle add course button click
+            addCourseButton.addEventListener('click', () => {
+                if (selectedCourse) {
+                    addCourse(selectedCourse);
+                    validationMessageDiv.textContent = 'Course added successfully!';
+                } else {
+                    validationMessageDiv.textContent = 'Please select a course to add.';
+                }
+            });
+
+            // Handle remove course button click
+            removeCourseButton.addEventListener('click', () => {
+                if (selectedCourse) {
+                    removeCourse(selectedCourse);
+                    validationMessageDiv.textContent = 'Course removed successfully!';
+                } else {
+                    validationMessageDiv.textContent = 'Please select a course to remove.';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
